@@ -1,11 +1,17 @@
 import React from "react";
 
-export default function FlightCard({ flight }) {
+const FlightCard = ({ flight: { airline, from, to, price } }) => {
   return (
     <div className="card">
-      <h3>{flight.airline}</h3>
-      <p>{flight.from} → {flight.to}</p>
-      <p>₹{flight.price}</p>
+      <h3>{airline}</h3>
+
+      <p>
+        {from} → {to}
+      </p>
+
+      <strong>₹{price}</strong>
     </div>
   );
-}
+};
+
+export default FlightCard;
