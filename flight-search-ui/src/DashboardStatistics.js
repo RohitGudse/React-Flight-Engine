@@ -1,11 +1,37 @@
+
 import React from "react";
 
-export default function DashboardStats() {
+const statistics = [
+  {
+    id: 1,
+    title: "Total Flights",
+    value: 120,
+    icon: "✈️",
+  },
+  {
+    id: 2,
+    title: "Total Bookings",
+    value: 450,
+    icon: "🎫",
+  },
+];
+
+function DashboardStats() {
   return (
-    <div className="card">
+    <div className="dashboard-stats">
       <h2>Statistics</h2>
-      <p>Total Flights: 120</p>
-      <p>Total Bookings: 450</p>
+
+      <div className="stats-container">
+        {statistics.map((item) => (
+          <div className="card" key={item.id}>
+            <span className="stats-icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.value}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
+
+export default DashboardStats;
