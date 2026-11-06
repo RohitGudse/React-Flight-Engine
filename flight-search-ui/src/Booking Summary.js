@@ -1,11 +1,25 @@
+
 import React from "react";
 
-export default function BookingSummary() {
+const BookingSummary = () => {
+  const passengers = 2;
+  const fare = 15000;
+
   return (
-    <div className="card">
+    <section className="card">
       <h2>Booking Summary</h2>
-      <p>Total Passengers: 2</p>
-      <p>Total Fare: ₹15,000</p>
-    </div>
+
+      <div>
+        <span>Total Passengers:</span>
+        <strong>{passengers}</strong>
+      </div>
+
+      <div>
+        <span>Total Fare:</span>
+        <strong>₹{fare.toLocaleString("en-IN")}</strong>
+      </div>
+    </section>
   );
-}
+};
+
+export default BookingSummary;
