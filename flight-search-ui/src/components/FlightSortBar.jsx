@@ -1,36 +1,48 @@
+
 import React from "react";
 
-const FlightSortBar = ({ selectedSort, onSortChange, totalFlights }) => {
-  const sortOptions = [
-    { value: "price", label: "Lowest Price" },
-    { value: "duration", label: "Shortest Duration" },
-    { value: "departure", label: "Earliest Departure" },
-  ];
+const SORT_OPTIONS = [
+  { value: "price", label: "Lowest Price" },
+  { value: "duration", label: "Shortest Duration" },
+  { value: "departure", label: "Earliest Departure" },
+];
+
+function FlightSortBar({ selectedSort, onSortChange, totalFlights }) {
+
+  const handleSort = (e) => {
+    onSortChange(e.target.value);
+  };
 
   return (
-    <div className="flight-sort-bar">
+    <section className="flight-sort-bar">
+
       <div className="flight-sort-info">
         <h3>Available Flights</h3>
-        <span>{totalFlights} flights found</span>
+        <p>
+          Showing {totalFlights} available flights
+        </p>
       </div>
 
       <div className="flight-sort-control">
-        <label htmlFor="flight-sort">Sort by:</label>
+        <label htmlFor="flight-sort">
+          Sort Flights:
+        </label>
 
         <select
           id="flight-sort"
           value={selectedSort}
-          onChange={(event) => onSortChange(event.target.value)}
+          onChange={handleSort}
         >
-          {sortOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
+          {SORT_OPTIONS.map(({ value, label }) => (
+            <option value={value} key={value}>
+              {label}
             </option>
           ))}
         </select>
       </div>
-    </div>
+
+    </section>
   );
-};
+}
 
 export default FlightSortBar;
